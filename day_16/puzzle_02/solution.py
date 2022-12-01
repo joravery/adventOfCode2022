@@ -4,5 +4,5 @@ def process_list(lines: list):
 if __name__ == "__main__":
     # Assumes a list of lines as input
     pass
-    with open("../input.txt", "r") as input_file:
+    with open("../input.txt", "r", encoding="utf-8") as input_file:
         pass
