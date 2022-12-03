@@ -22,10 +22,11 @@ def find_duplicate(ruck):
     Returns the item (character) that occurs in both compartments of the rucksack (both halves of the string)
     '''
     ruck_size = len(ruck)
+    second_compartment = ruck[int(ruck_size/2):]
     for i,item in enumerate(ruck):
         if i >= len(ruck)/2:
             return -1
-        if item in ruck[int(ruck_size/2):]:
+        if item in second_compartment:
             return item
 
 if __name__ == "__main__":
