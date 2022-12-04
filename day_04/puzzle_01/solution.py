@@ -1,6 +1,6 @@
 def process_spaces(cleaning_assignments: list):
     '''
-    Comapres a pair of space cleaning assignments (Hyphenated string representing a range) and counts how many 
+    Comapres a pair of space cleaning assignments (Hyphenated string representing a range) and counts how many
     are subsets
     '''
     total_subsets = 0
@@ -29,6 +29,5 @@ def is_sub_set(range_1, range_2):
 
 if __name__ == "__main__":
     # Assumes a list of lines as input
-    pass
     with open("../input.txt", "r", encoding="utf-8") as input_file:
         process_spaces(input_file.readlines())
