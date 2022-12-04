@@ -21,10 +21,6 @@ def is_sub_set(range_1, range_2):
         return True
     if range_1_start >= range_2_start and range_1_end <= range_2_end:
         return True
-    if range_1_start == range_1_end and (range_1_end <= range_2_end and range_1_start >= range_2_start):
-        return True
-    if range_2_start == range_2_end and (range_2_end <= range_1_end and range_2_start >= range_1_start):
-        return True
     return False
 
 if __name__ == "__main__":
