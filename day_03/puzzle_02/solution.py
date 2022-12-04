@@ -4,7 +4,7 @@ def process_rucks(rucks: list):
     Each rucksuck has two compartments, the first being the first half of the string and the second being the second.
     '''
     total = 0
-    for i in range(0,len(rucks), 3):
+    for i in range(0, len(rucks), 3):
         group_badge = get_group_badge([rucks[i], rucks[i+1], rucks[i+2]])
         total += get_value(group_badge)
     print(f"Total: {total}")
@@ -13,10 +13,10 @@ def get_group_badge(rucks: list):
     '''
     Finds the only item (character) that occurs in all three rucksacks (strings)
     '''
-    smallest_ruck = sorted(rucks, key = lambda x: len(x), reverse=False)[0]
-    print(f"smallest_ruck: {smallest_ruck}, rucks: {rucks}")
+    sorted_rucks = sorted(rucks, key = lambda x: len(x), reverse=False)
+    smallest_ruck = sorted_rucks[0]
     for item in smallest_ruck:
-        if item in rucks[0] and item in rucks[1] and item in rucks[2]:
+        if item in sorted_rucks[1] and item in sorted_rucks[2]:
             return item
 
 def get_value(item:str):
