@@ -10,10 +10,10 @@ def find_first_unique_substring(signal: str, sub_string_length: int):
     return -1
 
 if __name__ == "__main__":
-    sub_string_length = 4 if len(sys.argv) <2 else int(sys.argv[1])
+    SUB_STRING_LENGTH = 4 if len(sys.argv) <2 else int(sys.argv[1])
 
     with open("../input.txt", "r", encoding="utf-8") as input_file:
         signal = input_file.readlines()[0]
-        sub_string_end = find_first_unique_substring(signal, sub_string_length)
-        print(f"The first unique substring of size {sub_string_length} is: '{signal[sub_string_end-sub_string_length:sub_string_end]}\'")
+        sub_string_end = find_first_unique_substring(signal, SUB_STRING_LENGTH)
+        print(f"The first unique substring of size {SUB_STRING_LENGTH} is: '{signal[sub_string_end-SUB_STRING_LENGTH:sub_string_end]}\'")
         print(f"The substring end at the {sub_string_end+1}th position")
