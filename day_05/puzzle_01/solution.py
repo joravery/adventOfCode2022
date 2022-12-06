@@ -9,8 +9,8 @@ def process_crate_stacks(stacks: list, instructions: list):
         for _ in range(count):
             box = stacks[source].pop()
             stacks[destination].append(box)
-    message = [x[-1] for x in stacks[1:]]
-    print(''.join(message))
+    return stacks
+    
 
 def parse_single_instruction(instruction: str):
     '''
@@ -45,11 +45,11 @@ def create_initial_stacks(stack_rows: list):
                 stacks[i+1].insert(0, box)
 
     return stacks
-    
+
 def parse_input(input_lines: list):
     '''
     Splits the input into two sections: The initial crate stacks and the list of instrucitons.
-    Between the two is an empty line. 
+    Between the two is an empty line.
     There is also a row of indicies after the crate stacks which is skipped.
     '''
     split = input_lines.index("\n")
@@ -58,6 +58,7 @@ def parse_input(input_lines: list):
 if __name__ == "__main__":
     # Assumes a list of lines as input
     with open("../input.txt", "r", encoding="utf-8") as input_file:
-        (stack_lines, instructions) = parse_input(input_file.readlines())
+        stack_lines, instructions = parse_input(input_file.readlines())
         stacks = create_initial_stacks(stack_lines)
-        process_crate_stacks(stacks, instructions)
+        udpated_stacks = process_crate_stacks(stacks, instructions)
+        print(''.join([x[-1] for x in stacks[1:]]))
