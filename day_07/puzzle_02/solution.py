@@ -1,12 +1,18 @@
 from day_07.files import build_file_system
 
 def find_smallest_directory_to_obtain_required_space(lines: list, disk_size: int, space_required):
+    '''
+    Builds a file system based on a list of CLI commands and output and then returns the smallest directory that exceeds the space required
+    '''
     file_system_root = build_file_system(lines)
     size_needed = space_required - (disk_size - file_system_root.size)
     print(f"Size required: {size_needed}")
     return min(find_dirs_greater_than_threshold(file_system_root, size_needed))
 
 def find_dirs_greater_than_threshold(root, size_threshold):
+    '''
+    Returns a list of all directories that exceed the size_threshold
+    '''
     total = []
     if root.size >= size_threshold:
         total.append(root.size)

@@ -1,6 +1,9 @@
 from day_07.commands import parse_command, execute_cd, process_ls_output
 
 def calculate_directory_sizes(root):
+    '''
+    Recursively adds the size of all child directories to each directory
+    '''
     children_size = 0
     for child in root.children:
         child_node = root.get_child(child)
@@ -9,6 +12,9 @@ def calculate_directory_sizes(root):
     root.size += children_size
 
 def build_file_system(lines: list):
+    '''
+    Iterates through a list of CLI commands and subsequent output and creates a file system structure.
+    '''
     cwd = []
     for line in lines:
         if line[0] == "$":

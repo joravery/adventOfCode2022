@@ -20,7 +20,7 @@ jobs:
         pip install -r requirements.txt
     - name: Analysing the code with pylint
       run: |
-        pylint --disable=missing-module-docstring $(ls ./day_0{1..7}/puzzle*/*.py)
+        pylint --disable=missing-module-docstring $(ls ./day_0{1..7}/puzzle*/*.py) $(ls ./day_0{1..7}/*.py)
         pylint --disable=missing-module-docstring,missing-function-docstring $(ls ./day_0{1..7}/tests/*.py)
     - name: Running pytest
       run: |
