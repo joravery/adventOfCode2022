@@ -1,7 +1,7 @@
 import day_03.puzzle_01.solution as s
 
 def test_find_duplicate():
-    assert s.find_duplicate("vJrwpWtwJgWrhcsFMMfFFhFp") == "p"    
+    assert s.find_duplicate("vJrwpWtwJgWrhcsFMMfFFhFp") == "p"
     assert s.find_duplicate("jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL") == "L"
     assert s.find_duplicate("PmmdzqPrVvPwwTWBwg") == "P"
     assert s.find_duplicate("wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn") == "v"

@@ -10,7 +10,7 @@ def process_crate_stacks(stacks: list, instructions: list):
             box = stacks[source].pop()
             stacks[destination].append(box)
     return stacks
-    
+
 
 def parse_single_instruction(instruction: str):
     '''
