@@ -2,19 +2,14 @@ def process_terminal_output(lines: list):
     file_root = Node("/")
     cwd = [file_root]
     for line in lines:
-        print(f"processing line: {line}, len(cwd): {len(cwd)}, cwd: {cwd}")
         if line[0] == "$":
             command, args = parse_command(line)
-            # print(f"parsed command: {command}")
             if command == 'cd':
                 if args == "..":
                     cwd = cwd[:-1]
                 else:
-                    # print(f"result of cwd[-1].get_child(args): {cwd[-1].get_child(args)}")
                     if cwd[-1].get_child(args) == None:
-                        print(f"AppendING to cwd: {args}, cwd: {cwd}")
                         cwd[-1].add_child(args)
-                        print(f"AppendED to cwd: {args}, cwd: {cwd}")
                     cwd.append(cwd[-1].get_child(args))
             if command == 'ls':
                 continue
@@ -23,12 +18,8 @@ def process_terminal_output(lines: list):
                 cwd[-1].add_child(line.split()[1])
             else:
                 cwd[-1].add_file(line.split()[1], line.split()[0])
-    #     print(file_root)
-    # print(file_root)
     assign_sizes(file_root)
     print(find_dirs_less_than(file_root))
-    # print(file_root)
-    # print(file_root.size)
 
 def find_dirs_less_than(root):
     total = 0
@@ -36,27 +27,21 @@ def find_dirs_less_than(root):
         total += root.size
     for child in root.children:
         total += find_dirs_less_than(root.get_child(child))
-    
     return total
-        
     
 def parse_command(command: str):
     command_parts = command.split()
-    # print(command_parts)
     if len(command_parts) == 3:
         return command_parts[1], command_parts[2]
     return command_parts[1], None
 
 def assign_sizes(root):
     children_size = 0
-    print(root.children)
     for child in root.children:
         child_node = root.get_child(child)
         assign_sizes(child_node)
         children_size += child_node.size
     root.size += children_size
-
-    
 
 class Node:
     def __init__(self, name) -> None:
