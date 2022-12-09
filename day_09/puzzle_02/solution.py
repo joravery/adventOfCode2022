@@ -1,22 +1,23 @@
 def process_list(lines: list):
-    visited_positions = set()
+    visited_positions = [set((0,0)), set((0,0)), set((0,0)), set((0,0)), set((0,0)), set((0,0)), set((0,0)), set((0,0)), set((0,0)), set((0,0))]
     knots = [[0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0]]
 
-    update_visited_positions(knots[-1], visited_positions)
+
     for movement in lines:
         [direction, magnitude] = movement.split()
         execute_move(direction, int(magnitude), knots, visited_positions)
-    print(f"Total spots visited after executing all commands: {get_total_spots_visited(visited_positions)}")
-    return len(visited_positions)
+    print(f"Total spots visited after executing all commands: {get_total_spots_visited(visited_positions[1])}")
+    first_tail_position_count = len(visited_positions[1])
+    last_tail_position_count = len(visited_positions[-1])
+    return (first_tail_position_count, last_tail_position_count)
 
-def execute_move(direction: str, magnitude: int, knots, visited_map):
+def execute_move(direction: str, magnitude: int, knots, visited_positions: list[set]):
     while magnitude > 0:
         update_position(direction, knots[0])
         for i in range(1, len(knots)):
             if should_move_tail(knots[i-1], knots[i]):
                 update_tail(knots[i-1], knots[i])
-                if i == len(knots) -1:
-                    update_visited_positions(knots[-1], visited_map)
+                update_visited_positions(knots[i], visited_positions[i])
         magnitude -= 1
 
 
@@ -58,8 +59,8 @@ def update_tail(head_pos, tail_pos):
 def should_move_diaganolly(head_pos, tail_pos):
     return abs(head_pos[0] - tail_pos[0])+ abs(head_pos[1] - tail_pos[1]) > 2
 
-def update_visited_positions(tail_pos: list, visited_positions: set):
-    visited_positions.add(tuple(tail_pos))
+def update_visited_positions(tail_pos: list, visited_position: set):
+    visited_position.add(tuple(tail_pos))
 
 def get_total_spots_visited(visted_map):
     return len(visted_map)
@@ -67,4 +68,6 @@ def get_total_spots_visited(visted_map):
 
 if __name__ == "__main__":
     with open("./input.txt", "r", encoding="utf-8") as input_file:
-        process_list(input_file.readlines())
+        FIRST_TAIL, LAS_TAIL = process_list(input_file.readlines())
+    print(f"One tail visited {FIRST_TAIL} unique positions")
+    print(f"The last of 9 tails visited {LAS_TAIL} unique positions")
