@@ -4,28 +4,28 @@ from day_11.monkey import Monkey
 
 PUZZLE_01_TEST = [
     Monkey(
-        [79, 98],
-        lambda x: x * 19,
-        lambda y: 2 if y % 23 == 0 else 3,
-        lambda z: int(math.floor(z/3))
+        items=[79, 98],
+        inspection_function=lambda x: x * 19,
+        test_function=lambda y: 2 if y % 23 == 0 else 3,
+        worry_reduction_function=lambda z: int(math.floor(z/3))
     ),
     Monkey(
-        [54, 65, 75, 74],
-        lambda x: x + 6,
-        lambda y: 2 if y % 19 == 0 else 0,
-        lambda z: int(math.floor(z/3))
+        items=[54, 65, 75, 74],
+        inspection_function=lambda x: x + 6,
+        test_function=lambda y: 2 if y % 19 == 0 else 0,
+        worry_reduction_function=lambda z: int(math.floor(z/3))
     ),
     Monkey(
-        [79, 60, 97],
-        lambda x: x * x,
-        lambda y: 1 if y % 13 == 0 else 3,
-        lambda z: int(math.floor(z/3))
+        items=[79, 60, 97],
+        inspection_function=lambda x: x * x,
+        test_function=lambda y: 1 if y % 13 == 0 else 3,
+        worry_reduction_function=lambda z: int(math.floor(z/3))
     ),
     Monkey(
-        [74],
-        lambda x: x + 3,
-        lambda y: 0 if y % 17 == 0 else 1,
-        lambda z: int(math.floor(z/3))
+        items=[74],
+        inspection_function=lambda x: x + 3,
+        test_function=lambda y: 0 if y % 17 == 0 else 1,
+        worry_reduction_function=lambda z: int(math.floor(z/3))
     ),
 ]
 
@@ -33,27 +33,27 @@ TEST_PRODUCT_DIVISOR = 23 * 19 * 13 * 17
 PUZZLE_02_TEST = [
     Monkey(
         [79, 98],
-        lambda x: x * 19,
-        lambda y: 2 if y % 23 == 0 else 3,
-        lambda z: z % TEST_PRODUCT_DIVISOR
+        inspection_function=lambda x: x * 19,
+        test_function=lambda y: 2 if y % 23 == 0 else 3,
+        worry_reduction_function=lambda z: z % TEST_PRODUCT_DIVISOR
     ),
     Monkey(
         [54, 65, 75, 74],
-        lambda x: x + 6,
-        lambda y: 2 if y % 19 == 0 else 0,
-        lambda z: z % TEST_PRODUCT_DIVISOR
+        inspection_function=lambda x: x + 6,
+        test_function=lambda y: 2 if y % 19 == 0 else 0,
+        worry_reduction_function=lambda z: z % TEST_PRODUCT_DIVISOR
     ),
     Monkey(
         [79, 60, 97],
-        lambda x: x * x,
-        lambda y: 1 if y % 13 == 0 else 3,
-        lambda z: z % TEST_PRODUCT_DIVISOR
+        inspection_function=lambda x: x * x,
+        test_function=lambda y: 1 if y % 13 == 0 else 3,
+        worry_reduction_function=lambda z: z % TEST_PRODUCT_DIVISOR
     ),
     Monkey(
         [74],
-        lambda x: x + 3,
-        lambda y: 0 if y % 17 == 0 else 1,
-        lambda z: z % TEST_PRODUCT_DIVISOR
+        inspection_function=lambda x: x + 3,
+        test_function=lambda y: 0 if y % 17 == 0 else 1,
+        worry_reduction_function=lambda z: z % TEST_PRODUCT_DIVISOR
     ),
 ]
 

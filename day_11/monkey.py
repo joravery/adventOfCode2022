@@ -1,5 +1,6 @@
 import math
 
+
 class Monkey:
     def __init__(self, items: list, inspection_function: callable, test_function: callable, worry_reduction_function: callable):
         self.items = items
@@ -10,15 +11,14 @@ class Monkey:
 
     def inspect_next_item(self):
         if len(self.items) == 0:
-            raise ValueError("Should not call inspect on a monkey with no items ...")
+            raise ValueError(
+                "Should not call inspect on a monkey with no items ...")
         self.inspection_count += 1
-
         initial_worry_level = self.items.pop(0)
         total_worry = self.inspect_operation(initial_worry_level)
         total_worry = self.worry_reduction(total_worry)
         destination = self.test(total_worry)
         return (destination, total_worry)
-
 
     def get_items(self):
         return self.items
