@@ -59,8 +59,8 @@ PUZZLE_02_TEST = [
 
 
 def test_first_provided_input():
-    assert s.process_list(PUZZLE_01_TEST, 20) == 10605
+    assert s.run_monkey_circus(PUZZLE_01_TEST, 20) == 10605
 
 
 def test_puzzle_02():
-    assert s.process_list(PUZZLE_02_TEST, 10000) == 2713310158
+    assert s.run_monkey_circus(PUZZLE_02_TEST, 10000) == 2713310158

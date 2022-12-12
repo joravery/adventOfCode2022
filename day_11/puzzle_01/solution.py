@@ -3,7 +3,7 @@ from day_11.monkey import Monkey
 from day_11.monkey_pack import MonkeyPack
 
 
-def process_list(monkeys: list[Monkey], round_count: int):
+def run_monkey_circus(monkeys: list[Monkey], round_count: int):
     monkey_pack = MonkeyPack(monkeys)
     for i in range(0, round_count):
         monkey_pack.execute_round()
@@ -65,11 +65,11 @@ def get_monkey_list(worry_reduction_function: callable):
 
 if __name__ == "__main__":
     puzzle_01_monkeys = get_monkey_list(lambda z: int(math.floor(z/3)))
-    puzzle_01_answer = process_list(puzzle_01_monkeys, 20)
+    puzzle_01_answer = run_monkey_circus(puzzle_01_monkeys, 20)
     print(f"Puzzle 1 answer is: {puzzle_01_answer}")
 
     TEST_FUNCTION_DIVISOR_PRODUCT = 5 * 2 * 13 * 7 * 19 * 11 * 3 * 17
     puzzle_02_monkeys = get_monkey_list(
         lambda z: z % TEST_FUNCTION_DIVISOR_PRODUCT)
-    puzzle_02_answer = process_list(puzzle_02_monkeys, 10000)
+    puzzle_02_answer = run_monkey_circus(puzzle_02_monkeys, 10000)
     print(f"Puzzle 2 answer is: {puzzle_02_answer}")
